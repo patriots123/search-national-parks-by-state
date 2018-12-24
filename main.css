@@ -26,3 +26,7 @@
   .hidden {
     display: none;
   }
+
+  form section {
+      display: inline-block;
+  }

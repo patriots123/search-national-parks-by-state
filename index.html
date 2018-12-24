@@ -4,27 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>YouTube video finder</title>
+    <title>National Park Finder</title>
     <link rel="stylesheet" href="main.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
-        <h1>YouTube video finder</h1>
+        <h1>National Park Finder</h1>
 
         <form id="js-form">
-            <label for="search-term">Search term</label>
-            <input type="text" name="search-term" id="js-search-term" required>
-
-            <label for="max-results">Maximum results to return</label>
-            <input type="number" name="max-results" id="js-max-results" value="10">
-
+            <section>
+                <label for="search-term">Choose 1 or More States (comma separated list)</label>
+                <input type="text" name="search-term" id="js-search-term" required>
+            </section>
+            <section>
+                <label for="max-results">Maximum results to return</label>
+                <input type="number" name="max-results" id="js-max-results" value="10">
+            </section>
             <input type="submit" value="Go!">
         </form>
 
         <p id="js-error-message" class="error-message"></p>
         <section id="results" class="hidden">
-          <h2>Search results</h2>
+          <h2 class="js-search-results-title"></h2>
           <ul id="results-list">
           </ul>
         </section>
