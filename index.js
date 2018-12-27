@@ -9,18 +9,14 @@ function formatQueryParams(params) {
 function displayResults(responseJson,maxResults) {
     console.log(responseJson);
     $('#results-list').empty();
-    if (array === undefined || array.length == 0) {
-        $('#results-list').append(`No results for search citeria`);
-    } else {
-        for (let i = 0; i < responseJson.data.length; i++){
-          $('#results-list').append(
-            `<li><h3>${responseJson.data[i].name}</h3>
-            <p>${responseJson.data[i].description}</p>
-            <a href='${responseJson.data[i].url}'>Website for ${responseJson.data[i].name}</a>
-            </li>`
-          )};
-        $('.js-search-results-title').text(`First ${maxResults} Search Results in Specified State(s)`);
-    }
+    for (let i = 0; i < responseJson.data.length; i++){
+      $('#results-list').append(
+        `<li><h3>${responseJson.data[i].name}</h3>
+        <p>${responseJson.data[i].description}</p>
+        <a href='${responseJson.data[i].url}'>Website for ${responseJson.data[i].name}</a>
+        </li>`
+      )};
+    $('.js-search-results-title').text(`First ${maxResults} Search Results in Specified State(s)`);
     $('#results').removeClass('hidden');
 };
 
@@ -38,19 +34,17 @@ function getListOfParks(query, maxResults) {
     const queryString = formatQueryParams(params)
     const url = searchURL + '?' + queryString;
 
-    console.log(url);
-
-        fetch(url, params)
-        .then(response => {
-            if (response.ok) {
-              return response.json();
-            }
-            throw new Error(response.statusText);
-        })
-        .then(responseJson => displayResults(responseJson,maxResults))
-        .catch(err => {
-            $('#js-error-message').text(`Something went wrong: ${err.message}`);
-        });
+    fetch(url, params)
+    .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(response.statusText);
+    })
+    .then(responseJson => displayResults(responseJson,maxResults))
+    .catch(err => {
+        $('#js-error-message').text(`Something went wrong: ${err.message}`);
+    });
 }   
 
 function watchForm() {
